@@ -1,8 +1,8 @@
-public class Body{
+public class Planet{
     public double xxPos, yyPos, xxVel, yyVel, mass;
     public String imgFileName;
     public static double G = 6.67e-11;
-    public Body(double xP, double yP, double xV, double yV, double m, String img) {
+    public Planet(double xP, double yP, double xV, double yV, double m, String img) {
         xxPos = xP;
         yyPos = yP;
         xxVel = xV;
@@ -10,7 +10,7 @@ public class Body{
         mass = m;
         imgFileName = img;
     }
-    public Body(Body b) {
+    public Planet(Planet b) {
         xxPos = b.xxPos;
         yyPos = b.yyPos;
         xxVel = b.xxVel;
@@ -19,25 +19,25 @@ public class Body{
         imgFileName = b.imgFileName;
     }
 
-    public double calcDistance(Body b) {
+    public double calcDistance(Planet b) {
         double distance2 = Math.pow(b.xxPos - this.xxPos, 2) + Math.pow(b.yyPos - this.yyPos, 2);
         return Math.sqrt(distance2);
     }
     /**calculate the force */
-    public double calcForceExertedBy(Body b) {
+    public double calcForceExertedBy(Planet b) {
         double distance = this.calcDistance(b);
         double Force = G * this.mass * b.mass / (distance * distance);
         return Force;
     }
 
-    public double calcForceExertedByX(Body b) {
+    public double calcForceExertedByX(Planet b) {
         double distance = this.calcDistance(b);
         double Force = this.calcForceExertedBy(b);
         double dx = b.xxPos - this.xxPos;
         return Force * dx / distance;
     }
 
-    public double calcForceExertedByY(Body b) {
+    public double calcForceExertedByY(Planet b) {
         double distance = this.calcDistance(b);
         double Force = this.calcForceExertedBy(b);
         double dy = b.yyPos - this.yyPos;
@@ -45,7 +45,7 @@ public class Body{
     }  
 
     /**calculate the net force */
-    public double calcNetForceExertedByX(Body[] b) {
+    public double calcNetForceExertedByX(Planet[] b) {
         int num = b.length;
         double xNetForce = 0;
         for (int i = 0; i < num; i += 1){
@@ -57,7 +57,7 @@ public class Body{
         return xNetForce;
     }
 
-    public double calcNetForceExertedByY(Body[] b) {
+    public double calcNetForceExertedByY(Planet[] b) {
         int num = b.length;
         double yNetForce = 0;
         for (int i = 0; i < num; i += 1){
@@ -80,7 +80,7 @@ public class Body{
         yyPos += dt * yyVel;
     }    
 
-    /**draw body */
+    /**draw Planet */
     public void draw() {
         StdDraw.picture(xxPos, yyPos, "images/" + imgFileName);
     }
