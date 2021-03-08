@@ -6,7 +6,7 @@ public class NBody{
         return radius;
     }
 
-    public static Planet[] readBodies(String name) {
+    public static Planet[] readPlanets(String name) {
         In in = new In(name);
         int num = in.readInt();
         in.readDouble();
