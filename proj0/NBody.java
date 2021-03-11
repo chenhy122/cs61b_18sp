@@ -32,6 +32,7 @@ public class NBody{
         }
         StdDraw.show();
 
+        StdAudio.play("audio/2001.mid");
         StdDraw.enableDoubleBuffering();
         for (double time = 0; time <= T; time += dt){
             double[] xForces = new double[bodies.length];
