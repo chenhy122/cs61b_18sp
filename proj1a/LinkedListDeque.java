@@ -4,9 +4,9 @@ public class LinkedListDeque<T> {
     private DequeNode sentinelb;
 
     public class DequeNode {
-        public DequeNode prev;
-        public T item;
-        public DequeNode next;
+        private DequeNode prev;
+        private T item;
+        private DequeNode next;
         public DequeNode(DequeNode a, T i, DequeNode b) {
             prev = a;
             item = i;
@@ -48,7 +48,7 @@ public class LinkedListDeque<T> {
         return false;
     }
 
-    public int size(){
+    public int size() {
         return size;
     }
 
@@ -93,5 +93,17 @@ public class LinkedListDeque<T> {
         return d.next.item;
     }
 
+    public T getRecursive(int index) {
+        DequeNode d = this.sentinela;
+        LinkedListDeque l = new LinkedListDeque(this);
+        if (this.size <= index) {
+            return null;
+        }
+        if (index != 0) {
+            l.removeFirst();
+            return (T) l.getRecursive(index - 1);
+        }
+        return d.next.item;
+    }
 
 }

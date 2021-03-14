@@ -16,7 +16,7 @@ public class ArrayDeque<T> {
 
     private void resize(int z) {
         T[] a = (T []) new Object[z];
-        System.arraycopy(items,0,a,0,size);
+        System.arraycopy(items, 0, a, 0, size);
         items = a;
     }
 
