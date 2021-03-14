@@ -3,7 +3,7 @@ public class LinkedListDeque<T> {
     private int size;
     private DequeNode sentinelb;
 
-    public class DequeNode {
+    private class DequeNode {
         private DequeNode prev;
         private T item;
         private DequeNode next;
@@ -33,11 +33,13 @@ public class LinkedListDeque<T> {
     }
     public void addFirst(T item) {
         sentinela.next = new DequeNode(sentinela, item, sentinela.next);
+        sentinela.next.next.prev = sentinela.next;
         size += 1;
     }
 
     public void addLast(T item) {
         sentinelb.prev = new DequeNode(sentinelb.prev, item, sentinelb);
+        sentinelb.prev.prev.next = sentinelb.prev;
         size += 1;
     }
 
@@ -66,7 +68,7 @@ public class LinkedListDeque<T> {
             return null;
         }
         T result = sentinela.next.item;
-        sentinela.next = new DequeNode(sentinela, sentinela.next.next.item, sentinela.next.next);
+        sentinela.next = sentinela.next.next;
         size -= 1;
         return result;
     }
@@ -76,7 +78,7 @@ public class LinkedListDeque<T> {
             return null;
         }
         T result = sentinelb.prev.item;
-        sentinelb.prev = new DequeNode(sentinelb.prev.prev, sentinelb.prev.prev.item, sentinelb);
+        sentinelb.prev = sentinelb.prev.prev;
         size -= 1;
         return result;
     }
