@@ -58,7 +58,7 @@ public class ArrayDeque<T> {
         if (size >= 16) {
             return (double) size / items.length < 0.25;
         }
-        return (double) size / items.length < 0.1;
+        return false;
     }
 
     public T removeFirst() {
