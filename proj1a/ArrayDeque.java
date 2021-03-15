@@ -77,10 +77,11 @@ public class ArrayDeque<T> {
             return null;
         }
         size -= 1;
+        T last = items[size];
         if (usage()) {
             resize(items.length / 2);
         }
-        return items[size];
+        return last;
     }
 
     public T get(int index) {
