@@ -8,12 +8,6 @@ public class ArrayDeque<T> {
         size = 0;
     }
 
-    public ArrayDeque(ArrayDeque other) {
-        size = other.size();
-        items = (T []) new Object[size];
-        System.arraycopy(other, 0, items, 0, size);
-    }
-
     private void resize(int z) {
         T[] a = (T []) new Object[z];
         System.arraycopy(items, 0, a, 0, size);
@@ -54,13 +48,6 @@ public class ArrayDeque<T> {
         System.out.println();
     }
 
-    private boolean usage() {
-        if (items.length >= 16) {
-            return (double) size / items.length < 0.25;
-        }
-        return false;
-    }
-
     public T removeFirst() {
         if (isEmpty()) {
             return null;
@@ -68,8 +55,8 @@ public class ArrayDeque<T> {
         T first = items[0];
         size -= 1;
         System.arraycopy(items, 1, items, 0, size);
-        if (usage()) {
-            resize(items.length / 2);
+        if (items.length >= 16 && (double) size / items.length < 0.25) {
+            resize(items.length / 4);
         }
         return first;
     }
@@ -80,8 +67,8 @@ public class ArrayDeque<T> {
         }
         size -= 1;
         T last = items[size];
-        if (usage()) {
-            resize(items.length / 2);
+        if (items.length >= 16 && (double) size / items.length < 0.25) {
+            resize(items.length / 4);
         }
         return last;
     }
