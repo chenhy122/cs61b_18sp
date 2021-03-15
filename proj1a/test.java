@@ -1,14 +1,16 @@
 public class Test {
     public static void main(String[] args) {
-        ArrayDeque a = new ArrayDeque();
-        a.addLast(1);
-        a.addLast(2);
-        a.addFirst(5);
-        a.addFirst(6);
-        System.out.println(a.removeFirst());
-        System.out.println(a.removeLast());
+        ArrayDeque ArrayDeque = new ArrayDeque();
+        ArrayDeque.addFirst(0);
+        ArrayDeque.removeLast();
+        ArrayDeque.addLast(2);
+        ArrayDeque.removeFirst();
+        ArrayDeque.addLast(4);
+        ArrayDeque.removeLast();
+        ArrayDeque.addFirst(6);
+        ArrayDeque.removeFirst();
+        ArrayDeque.addLast(8);
 
-        System.out.print(a.isEmpty());
     }
 
 }

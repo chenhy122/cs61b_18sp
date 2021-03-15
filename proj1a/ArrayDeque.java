@@ -55,7 +55,7 @@ public class ArrayDeque<T> {
     }
 
     private boolean usage() {
-        if (size >= 16) {
+        if (items.length >= 16) {
             return (double) size / items.length < 0.25;
         }
         return false;
