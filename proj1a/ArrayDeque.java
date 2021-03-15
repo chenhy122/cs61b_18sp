@@ -60,20 +60,26 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
-        if (usage()) {
-            resize(items.length / 2);
+        if (isEmpty()) {
+            return null;
         }
         T first = items[0];
         size -= 1;
         System.arraycopy(items, 1, items, 0, size);
+        if (usage()) {
+            resize(items.length / 2);
+        }
         return first;
     }
 
     public T removeLast() {
+        if (isEmpty()) {
+            return null;
+        }
+        size -= 1;
         if (usage()) {
             resize(items.length / 2);
         }
-        size -= 1;
         return items[size];
     }
 
