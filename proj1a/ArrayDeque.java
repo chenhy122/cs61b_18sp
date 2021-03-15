@@ -24,7 +24,9 @@ public class ArrayDeque<T> {
         if (size == items.length) {
             resize(size * 10);
         }
-        System.arraycopy(items, 0, items, 1, size);
+        if (size != 0) {
+            System.arraycopy(items, 0, items, 1, size);
+        }
         items[0] = item;
         size += 1;
     }
