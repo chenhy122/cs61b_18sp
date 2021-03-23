@@ -1,4 +1,4 @@
-public class LinkedListDeque<Item> implements Deque<Item>{
+public class LinkedListDeque<Item> implements Deque<Item> {
     private DequeNode sentinela;
     private int size;
     private DequeNode sentinelb;
@@ -7,7 +7,7 @@ public class LinkedListDeque<Item> implements Deque<Item>{
         private DequeNode prev;
         private Item item;
         private DequeNode next;
-        public DequeNode(DequeNode a, Item i, DequeNode b) {
+        DequeNode(DequeNode a, Item i, DequeNode b) {
             prev = a;
             item = i;
             next = b;
